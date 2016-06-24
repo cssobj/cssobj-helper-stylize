@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "iife": "mkdir -p iife && rollup -f iife -n cssobj_plugin_post_stylize src/cssobj-plugin-post-stylize.js | uglifyjs -c -m -o iife/cssobj-plugin-post-stylize.js",
+    "iife": "mkdir -p iife && rollup -f iife -n cssobj_plugin_post_stylize src/cssobj-plugin-post-stylize.js -o iife/cssobj-plugin-post-stylize.js",
     "amd": "mkdir -p amd && rollup -f amd -u cssobj_plugin_post_stylize src/cssobj-plugin-post-stylize.js -o amd/cssobj-plugin-post-stylize.js",
     "cjs": "mkdir -p cjs && rollup -f cjs src/cssobj-plugin-post-stylize.js -o cjs/cssobj-plugin-post-stylize.js",
     "es": "mkdir -p es && rollup -f es src/cssobj-plugin-post-stylize.js -o es/cssobj-plugin-post-stylize.js",
