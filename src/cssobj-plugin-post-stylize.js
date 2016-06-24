@@ -1,4 +1,21 @@
+/**
+ * @fileOverview cssobj plugin for apply style into browser head
+ * @name cssobj-plugin-post-stylize.js • src
+ * @author James Yang [jamesyang999@gmail.com]
+ * @license MIT
+ * @usage
+cssobj(obj, {
+  post:[cssobj_plugin_post_stylize({name:'gaga', attrs: {media: 'screen'}})]
+})
+ */
 
+function escapeHTML (str) {
+  return str.replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
 
 function stylize (element, sheet) {
   element.type = 'text/css'
@@ -12,20 +29,24 @@ function stylize (element, sheet) {
   return element
 }
 
-var styleDom
-export default function addStyleToHead (sheet, option) {
-  var id = 'head_style_cssobj'
-  if (!styleDom) {
-    var el = document.createElement('style')
-    document.head.appendChild(el)
-    styleDom = el
-  }
-  styleDom.setAttribute('id', id.replace(/\"/g, '&quot;').replace(/\'/g, '&apos;'))
-  styleDom.setAttribute('type', 'text/css')
-  if(option && typeof option=='object' && option.attrs)
-    for(var i in option.attrs){
-      styleDom.setAttribute(i, option.attrs[i])
+export default function addStyleToHead (option) {
+  option = option || {}
+  if (!option.name) option.name = +new Date() + '_'
+  return function (sheet) {
+    var id = 'style_cssobj_' + escapeHTML(option.name)
+    var styleDom = document.getElementById(id)
+    if (!styleDom) {
+      var el = document.createElement('style')
+      document.head.appendChild(el)
+      styleDom = el
     }
-  return stylize(styleDom, sheet.css)
+    styleDom.setAttribute('id', id)
+    styleDom.setAttribute('type', 'text/css')
+    if (option && typeof option == 'object' && option.attrs)
+      for (var i in option.attrs) {
+        styleDom.setAttribute(i, option.attrs[i])
+    }
+    return stylize(styleDom, sheet.css)
+  }
 }
 
