@@ -20,7 +20,8 @@ define('cssobj_plugin_post_stylize', function () { 'use strict';
   }
 
   function stylize (element, sheet) {
-    element.type = 'text/css'
+    if(element.cachedCSS===sheet) return
+    element.cachedCSS = sheet
     if (element.styleSheet) {
       element.styleSheet.cssText = sheet
     } else {

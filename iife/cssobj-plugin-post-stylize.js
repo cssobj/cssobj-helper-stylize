@@ -21,7 +21,8 @@ var cssobj_plugin_post_stylize = (function () {
   }
 
   function stylize (element, sheet) {
-    element.type = 'text/css'
+    if(element.cachedCSS===sheet) return
+    element.cachedCSS = sheet
     if (element.styleSheet) {
       element.styleSheet.cssText = sheet
     } else {
