@@ -2,7 +2,7 @@
   "name": "cssobj-plugin-post-stylize",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "cjs/cssobj-plugin-post-stylize.js",
   "scripts": {
     "iife": "mkdir -p iife && rollup -f iife -n cssobj_plugin_post_stylize src/cssobj-plugin-post-stylize.js -o iife/cssobj-plugin-post-stylize.js",
     "amd": "mkdir -p amd && rollup -f amd -u cssobj_plugin_post_stylize src/cssobj-plugin-post-stylize.js -o amd/cssobj-plugin-post-stylize.js",
