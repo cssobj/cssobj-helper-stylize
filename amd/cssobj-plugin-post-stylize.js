@@ -52,7 +52,7 @@ define('cssobj_plugin_post_stylize', function () { 'use strict';
       if (Object.keys(result.vars).length) {
         var updateID = id + '_update'
         var updateDom = document.getElementById(updateID) || createDOM(updateID, option)
-        result.options.on('update', function (css) {
+        result.on('update', function (css) {
           stylize(updateDom, css)
         })
       }
