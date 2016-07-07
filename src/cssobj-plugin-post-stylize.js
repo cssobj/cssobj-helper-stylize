@@ -45,15 +45,15 @@ export default function addStyleToHead (option) {
   option = option || {}
   if (!option.name) option.name = +new Date() + ''
   var id = 'style_cssobj_' + escapeHTML(option.name)
+  var updateID = id + '_update'
+  var updateDom
   var styleDom = document.getElementById(id) || createDOM(id, option)
   return function (result) {
-    if (Object.keys(result.vars).length) {
-      var updateID = id + '_update'
-      var updateDom = document.getElementById(updateID) || createDOM(updateID, option)
-      result.on('update', function (css) {
-        stylize(updateDom, css)
-      })
-    }
+    result.on('update', function (css) {
+      updateDom = document.getElementById(updateID) || createDOM(updateID, option)
+      stylize(updateDom, css)
+    })
+    if(updateDom) stylize(updateDom, '')
     return stylize(styleDom, result.css)
   }
 }
