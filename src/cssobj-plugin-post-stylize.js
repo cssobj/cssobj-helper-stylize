@@ -18,8 +18,8 @@ function escapeHTML (str) {
 }
 
 function stylize (element, sheet) {
-  if (element.cachedCSS === sheet) return
-  element.cachedCSS = sheet
+  if (element['data-cachedCSS'] === sheet) return
+  element['data-cachedCSS'] = sheet
   if (element.styleSheet) {
     element.styleSheet.cssText = sheet
   } else {
@@ -32,7 +32,7 @@ function stylize (element, sheet) {
 
 function createDOM (id, option) {
   var el = document.createElement('style')
-  document.head.appendChild(el)
+  document.getElementsByTagName('head')[0].appendChild(el)
   el.setAttribute('id', id)
   if (option && typeof option == 'object' && option.attrs)
     for (var i in option.attrs) {

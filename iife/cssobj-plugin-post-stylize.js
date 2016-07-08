@@ -21,8 +21,8 @@ var cssobj_plugin_post_stylize = (function () {
   }
 
   function stylize (element, sheet) {
-    if (element.cachedCSS === sheet) return
-    element.cachedCSS = sheet
+    if (element['data-cachedCSS'] === sheet) return
+    element['data-cachedCSS'] = sheet
     if (element.styleSheet) {
       element.styleSheet.cssText = sheet
     } else {
@@ -35,7 +35,7 @@ var cssobj_plugin_post_stylize = (function () {
 
   function createDOM (id, option) {
     var el = document.createElement('style')
-    document.head.appendChild(el)
+    document.getElementsByTagName('head')[0].appendChild(el)
     el.setAttribute('id', id)
     if (option && typeof option == 'object' && option.attrs)
       for (var i in option.attrs) {
@@ -48,15 +48,15 @@ var cssobj_plugin_post_stylize = (function () {
     option = option || {}
     if (!option.name) option.name = +new Date() + ''
     var id = 'style_cssobj_' + escapeHTML(option.name)
+    var updateID = id + '_update'
+    var updateDom
     var styleDom = document.getElementById(id) || createDOM(id, option)
     return function (result) {
-      if (Object.keys(result.vars).length) {
-        var updateID = id + '_update'
-        var updateDom = document.getElementById(updateID) || createDOM(updateID, option)
-        result.on('update', function (css) {
-          stylize(updateDom, css)
-        })
-      }
+      result.on('update', function (css) {
+        updateDom = document.getElementById(updateID) || createDOM(updateID, option)
+        stylize(updateDom, css)
+      })
+      if(updateDom) stylize(updateDom, '')
       return stylize(styleDom, result.css)
     }
   }
