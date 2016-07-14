@@ -29,7 +29,6 @@ function stylize (element, sheet) {
     while(element.firstChild) element.removeChild(element.firstChild)
     element.appendChild(document.createTextNode(sheet))
   }
-  return element
 }
 
 function createDOM (id, option) {
@@ -47,16 +46,10 @@ function addStyleToHead (option) {
   option = option || {}
   if (!option.name) option.name = +new Date() + ''
   var id = 'style_cssobj_' + escapeHTML(option.name)
-  var updateID = id + '_update'
-  var updateDom
-  var styleDom = document.getElementById(id) || createDOM(id, option)
   return function (result) {
-    result.on('update', function (css) {
-      updateDom = document.getElementById(updateID) || createDOM(updateID, option)
-      stylize(updateDom, css)
-    })
-    if(updateDom) stylize(updateDom, '')
-    return stylize(styleDom, result.css)
+    var styleDom = document.getElementById(id) || createDOM(id, option)
+    stylize(styleDom, result.css)
+    return result
   }
 }
 
