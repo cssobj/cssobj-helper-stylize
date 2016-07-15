@@ -6,19 +6,7 @@ var cssobj_plugin_post_stylize = (function () {
    * @name cssobj-plugin-post-stylize.js • src
    * @author James Yang [jamesyang999@gmail.com]
    * @license MIT
-   * @usage
-   cssobj(obj, {
-   post:[cssobj_plugin_post_stylize({name:'gaga', attrs: {media: 'screen'}})]
-   })
   */
-
-  function escapeHTML (str) {
-    return str.replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;')
-  }
 
   function stylize (element, sheet) {
     if (element['data-cachedCSS'] === sheet) return
@@ -45,8 +33,9 @@ var cssobj_plugin_post_stylize = (function () {
 
   function addStyleToHead (option) {
     option = option || {}
-    if (!option.name) option.name = +new Date() + ''
-    var id = 'style_cssobj_' + escapeHTML(option.name)
+    if (!option.name) option.name = +new Date()
+    option.name += ''
+    var id = 'style_cssobj_' + option.name.replace(/[^a-zA-Z0-9$_]/g, '')
     return function (result) {
       var styleDom = document.getElementById(id) || createDOM(id, option)
       stylize(styleDom, result.css)
