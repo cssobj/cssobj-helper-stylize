@@ -2,17 +2,15 @@
   "name": "cssobj-plugin-post-stylize",
   "version": "1.0.0",
   "description": "",
-  "main": "cjs/cssobj-plugin-post-stylize.js",
+  "main": "dist/cssobj-plugin-post-stylize.cjs.js",
+  "jsnext:main": "dist/cssobj-plugin-post-stylize.es.js",
   "scripts": {
-    "iife": "mkdir -p iife && rollup -f iife -n cssobj_plugin_post_stylize src/cssobj-plugin-post-stylize.js -o iife/cssobj-plugin-post-stylize.js && uglifyjs iife/cssobj-plugin-post-stylize.js -cm -o iife/cssobj-plugin-post-stylize.min.js",
-    "amd": "mkdir -p amd && rollup -f amd -u cssobj_plugin_post_stylize src/cssobj-plugin-post-stylize.js -o amd/cssobj-plugin-post-stylize.js",
-    "cjs": "mkdir -p cjs && rollup -f cjs src/cssobj-plugin-post-stylize.js -o cjs/cssobj-plugin-post-stylize.js",
-    "es": "mkdir -p es && rollup -f es src/cssobj-plugin-post-stylize.js -o es/cssobj-plugin-post-stylize.js",
-    "make": "npm run iife && npm run cjs && npm run amd && npm run es",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "report": "cd dist && gzip < cssobj-plugin-post-stylize.min.js > cssobj-plugin-post-stylize.min.gz && ls -lh && rm -f *.gz",
+    "make": "rollup -c && uglifyjs dist/cssobj-plugin-post-stylize.iife.js -cm -o dist/cssobj-plugin-post-stylize.min.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "James Yang <jamesyang999@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "cssobj-helper": "github:cssobj/cssobj-helper"
   }
