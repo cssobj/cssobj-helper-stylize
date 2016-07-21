@@ -1,12 +1,14 @@
 var cssobj_plugin_post_stylize = (function () {
   'use strict';
 
-  /**
-   * @fileOverview cssobj plugin for apply style into browser head
-   * @name cssobj-plugin-post-stylize.js • src
-   * @author James Yang [jamesyang999@gmail.com]
-   * @license MIT
-  */
+  // random string, should used across all cssobj plugins
+  var random = (function () {
+    var count = 0
+    return function () {
+      count++
+      return '_' + Math.floor(Math.random() * Math.pow(2, 32)).toString(36) + count + '_'
+    }
+  })()
 
   function stylize (element, sheet) {
     if (element['data-cachedCSS'] === sheet) return
@@ -33,9 +35,9 @@ var cssobj_plugin_post_stylize = (function () {
 
   function addStyleToHead (option) {
     option = option || {}
-    if (!option.name) option.name = +new Date()
+    if (!option.name) option.name = random()
     option.name += ''
-    var id = 'style_cssobj_' + option.name.replace(/[^a-zA-Z0-9$_]/g, '')
+    var id = 'stylize_cssobj' + option.name.replace(/[^a-zA-Z0-9$_]/g, '')
     return function (result) {
       var styleDom = document.getElementById(id) || createDOM(id, option)
       stylize(styleDom, result.css)
