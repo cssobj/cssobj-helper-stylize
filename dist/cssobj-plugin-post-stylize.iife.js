@@ -35,9 +35,11 @@ var cssobj_plugin_post_stylize = (function () {
 
   function addStyleToHead (option) {
     option = option || {}
-    if (!option.name) option.name = random()
-    option.name += ''
-    var id = 'stylize_cssobj' + option.name.replace(/[^a-zA-Z0-9$_]/g, '')
+
+    var id = option.name
+        ? (option.name+'').replace(/[^a-zA-Z0-9$_-]/g, '')
+        : 'stylize_cssobj' + random()
+
     return function (result) {
       var styleDom = document.getElementById(id) || createDOM(id, option)
       stylize(styleDom, result.css)

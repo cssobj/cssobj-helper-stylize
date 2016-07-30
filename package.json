@@ -9,6 +9,14 @@
     "report": "cd dist && gzip < cssobj-plugin-post-stylize.min.js > cssobj-plugin-post-stylize.min.gz && ls -lh && rm -f *.gz",
     "make": "rollup -c && uglifyjs dist/cssobj-plugin-post-stylize.iife.js -cm -o dist/cssobj-plugin-post-stylize.min.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cssobj/cssobj-plugin-post-stylize.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cssobj/cssobj-plugin-post-stylize/issues"
+  },
+  "homepage": "https://github.com/cssobj/cssobj-plugin-post-stylize#readme",
   "author": "James Yang <jamesyang999@gmail.com>",
   "license": "MIT",
   "dependencies": {
