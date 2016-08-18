@@ -1,5 +1,4 @@
-var cssobj_plugin_post_stylize = (function () {
-  'use strict';
+define('cssobj_plugin_stylize', function () { 'use strict';
 
   // random string, should used across all cssobj plugins
   var random = (function () {
@@ -49,4 +48,4 @@ var cssobj_plugin_post_stylize = (function () {
 
   return addStyleToHead;
 
-}());
+});

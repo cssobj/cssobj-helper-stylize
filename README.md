@@ -1,4 +1,4 @@
-# cssobj-plugin-post-stylize
+# cssobj-plugin-stylize
 
 Apply css text into browser's style tag, can work with plugin-gencss.
 
@@ -6,9 +6,9 @@ Apply css text into browser's style tag, can work with plugin-gencss.
 
 ``` javascript
 var cssobj_core = require('cssobj-core')
-var pluginGenCSS = require('cssobj-plugin-post-gencss')
-var pluginStylize = require('cssobj-plugin-post-stylize')
-var cssobj = cssobj_core({plugins: {post: [pluginGenCSS(), pluginStylize(option)] }})
+var pluginGenCSS = require('cssobj-plugin-gencss')
+var pluginStylize = require('cssobj-plugin-stylize')
+var cssobj = cssobj_core({plugins: [pluginGenCSS(), pluginStylize(option)] })
 cssobj(obj)
 
 // plugin-gencss generated css text will be applied into <head>
@@ -17,7 +17,7 @@ cssobj(obj)
 ## Install
 
 ``` javascript
-npm install cssobj/cssobj-plugin-post-stylize
+npm install cssobj/cssobj-plugin-stylize
 ```
 
 ## API
@@ -38,7 +38,7 @@ The function read `result.css` as css text to insert into `<style>`.
 
 ### *RETURN*
 
-A function can be as cssobj post plugin.
+A function can be as cssobj plugin.
 
 
 ## Example
@@ -53,7 +53,7 @@ pluginStylize({name:'index-page-style', attrs:{type:'text/css', media:'screen'} 
 
 This plugin take simplicy first, just update all css text into `<style>` tag, may have performance issues.
 
-[plugin-cssom](https://github.com/cssobj/cssobj-plugin-post-cssom) take effiency first, it create every css rule and patch rules with `result.diff`
+[plugin-cssom](https://github.com/cssobj/cssobj-plugin-cssom) take effiency first, it create every css rule and patch rules with `result.diff`
 
 If you want apply cssobj once, and don't update result frequently, use `plugin-gencss` + `plugin-stylize`
 
