@@ -39,10 +39,12 @@ function addStyleToHead (option) {
       ? (option.name+'').replace(/[^a-zA-Z0-9$_-]/g, '')
       : 'stylize_cssobj' + random()
 
-  return function (result) {
-    var styleDom = document.getElementById(id) || createDOM(id, option)
-    stylize(styleDom, result.css)
-    return result
+  return {
+    post: function (result) {
+      var styleDom = document.getElementById(id) || createDOM(id, option)
+      stylize(styleDom, result.css)
+      return result
+    }
   }
 }
 

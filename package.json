@@ -1,13 +1,13 @@
 {
   "name": "cssobj-plugin-stylize",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "main": "dist/cssobj-plugin-stylize.cjs.js",
   "jsnext:main": "dist/cssobj-plugin-stylize.es.js",
   "scripts": {
     "test": "mocha",
     "report": "cd dist && gzip < cssobj-plugin-stylize.min.js > cssobj-plugin-stylize.min.gz && ls -lh && rm -f *.gz",
-    "make": "rollup -c && uglifyjs dist/cssobj-plugin-stylize.iife.js -cm -o dist/cssobj-plugin-stylize.min.js"
+    "make": "rollup -c && uglifyjs dist/cssobj-plugin-stylize.iife.js -cm -o dist/cssobj-plugin-stylize.min.js && gulp bump"
   },
   "repository": {
     "type": "git",
