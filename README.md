@@ -1,6 +1,8 @@
 # cssobj-plugin-stylize
 
-Apply css text into browser's style tag, can work with plugin-gencss.
+[![Join the chat at https://gitter.im/css-in-js/cssobj](https://badges.gitter.im/css-in-js/cssobj.svg)](https://gitter.im/css-in-js/cssobj)
+
+Apply css text into browser's style tag, can work with [cssobj-plugin-gencss](https://github.com/cssobj/cssobj-plugin-gencss).
 
 ## Usage
 
