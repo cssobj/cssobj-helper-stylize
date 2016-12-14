@@ -1,13 +1,13 @@
 // rollup.config.js
 
 export default {
-  entry: 'src/cssobj-plugin-stylize.js',
-  moduleName: 'cssobj_plugin_stylize',
-  moduleId: 'cssobj_plugin_stylize',
+  entry: 'src/cssobj-helper-stylize.js',
+  moduleName: 'cssobj_helper_stylize',
+  moduleId: 'cssobj_helper_stylize',
   targets: [
-    { format: 'iife', dest: 'dist/cssobj-plugin-stylize.iife.js' },
-    { format: 'amd',  dest: 'dist/cssobj-plugin-stylize.amd.js'  },
-    { format: 'cjs',  dest: 'dist/cssobj-plugin-stylize.cjs.js'  },
-    { format: 'es',   dest: 'dist/cssobj-plugin-stylize.es.js'   }
+    { format: 'iife', dest: 'dist/cssobj-helper-stylize.iife.js' },
+    { format: 'amd',  dest: 'dist/cssobj-helper-stylize.amd.js'  },
+    { format: 'cjs',  dest: 'dist/cssobj-helper-stylize.cjs.js'  },
+    { format: 'es',   dest: 'dist/cssobj-helper-stylize.es.js'   }
   ]
 }

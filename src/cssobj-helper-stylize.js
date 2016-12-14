@@ -1,6 +1,6 @@
 /**
- * @fileOverview cssobj plugin for apply style into browser head
- * @name cssobj-plugin-post-stylize.js • src
+ * @fileOverview cssobj helper for apply style into browser head
+ * @name cssobj-helper-post-stylize.js • src
  * @author James Yang [jamesyang999@gmail.com]
  * @license MIT
 */

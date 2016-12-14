@@ -1,25 +1,23 @@
 {
-  "name": "cssobj-plugin-stylize",
-  "version": "2.0.1",
+  "name": "cssobj-helper-stylize",
+  "version": "2.0.2",
   "description": "",
-  "main": "dist/cssobj-plugin-stylize.cjs.js",
-  "jsnext:main": "dist/cssobj-plugin-stylize.es.js",
+  "main": "dist/cssobj-helper-stylize.cjs.js",
+  "jsnext:main": "dist/cssobj-helper-stylize.es.js",
   "scripts": {
     "test": "mocha",
-    "report": "cd dist && gzip < cssobj-plugin-stylize.min.js > cssobj-plugin-stylize.min.gz && ls -lh && rm -f *.gz",
-    "make": "rollup -c && uglifyjs dist/cssobj-plugin-stylize.iife.js -cm -o dist/cssobj-plugin-stylize.min.js && gulp bump"
+    "report": "cd dist && gzip < cssobj-helper-stylize.min.js > cssobj-helper-stylize.min.gz && ls -lh && rm -f *.gz",
+    "make": "rollup -c && uglifyjs dist/cssobj-helper-stylize.iife.js -cm -o dist/cssobj-helper-stylize.min.js && gulp bump"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cssobj/cssobj-plugin-stylize.git"
+    "url": "git+https://github.com/cssobj/cssobj-helper-stylize.git"
   },
   "bugs": {
-    "url": "https://github.com/cssobj/cssobj-plugin-stylize/issues"
+    "url": "https://github.com/cssobj/cssobj-helper-stylize/issues"
   },
-  "homepage": "https://github.com/cssobj/cssobj-plugin-stylize#readme",
+  "homepage": "https://github.com/cssobj/cssobj-helper-stylize#readme",
   "author": "James Yang <jamesyang999@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "cssobj-helper": "github:cssobj/cssobj-helper"
-  }
+  "dependencies": {}
 }
