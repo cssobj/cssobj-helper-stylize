@@ -54,7 +54,7 @@ function arrayKV (obj, k, v, reverse, unique) {
 
 /**
  * @fileOverview cssobj helper for apply style into browser head
- * @name cssobj-helper-post-stylize.js • src
+ * @name cssobj-helper-stylize.js • src
  * @author James Yang [jamesyang999@gmail.com]
  * @license MIT
 */
@@ -85,16 +85,14 @@ function createDOM (id, option) {
 function addStyleToHead (option) {
   option = option || {};
 
-  var id = option.name
-      ? (option.name+'').replace(/[^a-zA-Z0-9$_-]/g, '')
-      : 'stylize_cssobj' + random();
+  var id = option.id
+      ? option.id+''
+      : 'cssobj_stylize_' + random();
 
-  return {
-    post: function (result) {
-      var styleDom = document.getElementById(id) || createDOM(id, option);
-      stylize(styleDom, result.css);
-      return result
-    }
+  return function (result) {
+    var styleDom = document.getElementById(id) || createDOM(id, option);
+    stylize(styleDom, result.css);
+    return result
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "cssobj-helper-stylize",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "",
   "main": "dist/cssobj-helper-stylize.cjs.js",
   "jsnext:main": "dist/cssobj-helper-stylize.es.js",

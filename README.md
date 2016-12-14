@@ -1,4 +1,4 @@
-# cssobj-plugin-stylize
+# cssobj-helper-stylize
 
 [![Join the chat at https://gitter.im/css-in-js/cssobj](https://badges.gitter.im/css-in-js/cssobj.svg)](https://gitter.im/css-in-js/cssobj)
 
@@ -8,56 +8,57 @@ Apply css text into browser's style tag, can work with [cssobj-plugin-gencss](ht
 
 ``` javascript
 var cssobj_core = require('cssobj-core')
-var pluginGenCSS = require('cssobj-plugin-gencss')
-var pluginStylize = require('cssobj-plugin-stylize')
-var cssobj = cssobj_core({plugins: [pluginGenCSS(), pluginStylize(option)] })
+var gencss = require('cssobj-plugin-gencss')
+var stylize = require('cssobj-helper-stylize')
+var cssobj = cssobj_core({
+    plugins: [gencss()],
+    onUpdate: stylize({id: 'mycss'})
+  })
 cssobj(obj)
 
-// plugin-gencss generated css text will be applied into <head>
+// generated css text will be insert into <head>
 ```
 
 ## Install
 
 ``` javascript
-npm install cssobj/cssobj-plugin-stylize
+npm install cssobj/cssobj-helper-stylize
 ```
 
 ## API
 
-### `var plugin = pluginStylize(option)`
+### `stylize(option?: object) -> (result){}`
 
-Get plugin function to apply, pass option.
-
-The function read `result.css` as css text to insert into `<style>`.
-
-### *PARAMS*
+Return a function accept `result` and insert `result.css` into `<style>` tag.
 
 ### `option`
 
- - `name` : {string} The id for `<style>` tag, if omit, will using random string.
+ - `id` : {string} The id for `<style>` tag, if omit, will using random string.
 
  - `attrs` : {object} The key/val to apply to `<style>` tag as attributes.
 
 ### *RETURN*
 
-A function can be as cssobj plugin.
+A function can be used in cssobj `onUpdate` option.
 
 
 ## Example
 
 ``` javascript
-pluginStylize({name:'index-page-style'})
+// in cssobj({ onUpdate:.... })
 
-pluginStylize({name:'index-page-style', attrs:{type:'text/css', media:'screen'} })
+onUpdate: stylize({name:'index-page-style'})
+
+onUpdate: stylize({name:'index-page-style', attrs:{type:'text/css', media:'screen'} })
 ```
 
-## Difference between plugin-cssom
+## Difference between helper-cssom
 
-This plugin take simplicy first, just update all css text into `<style>` tag, may have performance issues.
+This helper take simplicy first, just update all css text into `<style>` tag, may have performance issues.
 
 [plugin-cssom](https://github.com/cssobj/cssobj-plugin-cssom) take effiency first, it create every css rule and patch rules with `result.diff`
 
-If you want apply cssobj once, and don't update result frequently, use `plugin-gencss` + `plugin-stylize`
+If you want apply cssobj once, and don't update result frequently, use `plugin-gencss` + `helper-stylize`
 
 If you want update result frequently, use `plugin-cssom`, it optimized for this type of usage.
 
