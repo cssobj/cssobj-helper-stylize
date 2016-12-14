@@ -39,7 +39,9 @@ export default function addStyleToHead (option) {
 
   return function (result) {
     var styleDom = document.getElementById(id) || createDOM(id, option)
-    stylize(styleDom, result.css)
+    stylize(styleDom, typeof result=='string'
+            ? result
+            : result && result.css)
     return result
   }
 }
